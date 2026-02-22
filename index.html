@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navin // Digital Control Interface</title>
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: #050510;
+    color: #00ffe1;
+    overflow-x: hidden;
+}
+
+/* ===== GRID BACKGROUND ===== */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0,255,225,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,225,0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+}
+
+/* ===== NAVBAR ===== */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(0,255,225,0.3);
+}
+
+.logo {
+    font-size: 22px;
+    text-shadow: 0 0 8px #00ffe1;
+}
+
+/* ===== GLITCH TEXT ===== */
+.glitch {
+    font-size: 48px;
+    position: relative;
+    color: #00ffe1;
+    text-shadow: 0 0 10px #00ffe1;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+}
+
+.glitch::before {
+    animation: glitchTop 1s infinite linear alternate-reverse;
+    color: #ff00ff;
+}
+
+.glitch::after {
+    animation: glitchBottom 1s infinite linear alternate-reverse;
+    color: #00ffff;
+}
+
+@keyframes glitchTop {
+    0% { transform: translate(2px,-2px); }
+    100% { transform: translate(-2px,2px); }
+}
+
+@keyframes glitchBottom {
+    0% { transform: translate(-2px,2px); }
+    100% { transform: translate(2px,-2px); }
+}
+
+/* ===== HERO ===== */
+.hero {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* ===== TERMINAL ===== */
+.terminal {
+    margin: 40px auto;
+    width: 80%;
+    max-width: 700px;
+    padding: 20px;
+    border: 1px solid #00ffe1;
+    box-shadow: 0 0 15px #00ffe1;
+    text-align: left;
+}
+
+/* ===== CARDS ===== */
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #00ffe1;
+    padding: 30px;
+    width: 260px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px #00ffe1;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #00ffe1;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #00ffe1;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00ffe1;
+    color: black;
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+    <div class="logo">NAVIN.OS</div>
+    <div>STATUS: ONLINE</div>
+</div>
+
+<div class="hero">
+    <h1 class="glitch" data-text="SYSTEM INITIALIZED">
+        SYSTEM INITIALIZED
+    </h1>
+
+    <div class="terminal">
+        <p id="typing"></p>
+    </div>
+
+    <a class="btn" href="#">ACCESS PORTFOLIO</a>
+</div>
+
+<div class="section">
+    <h2>MODULES</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Automation</h3>
+            <p>API workflows, integrations, SaaS systems</p>
+        </div>
+
+        <div class="card">
+            <h3>Technical Support</h3>
+            <p>Global client troubleshooting experience</p>
+        </div>
+
+        <div class="card">
+            <h3>Systems</h3>
+            <p>Networking, security, infrastructure</p>
+        </div>
+    </div>
+</div>
+
+<script>
+const text = "Initializing digital operations interface...\nAccess granted.\nWelcome, Navin Kumar S.";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+
+typeWriter();
+</script>
+
+</body>
+</html>
